@@ -10,7 +10,7 @@
 <body style="margin: 0; overflow: hidden;">
     <a-scene embedded>
         <!-- Marcador Hiro -->
-        <a-marker preset="hiro">
+        <a-marker preset="hiro" id="hiro-marker">
             <!-- Modelo 3D -->
             <a-entity gltf-model="url(modelo.glb)" 
                       position="0 0 0" 
@@ -21,5 +21,23 @@
         <!-- Cámara para la escena -->
         <a-entity camera></a-entity>
     </a-scene>
+    
+    <script>
+        const marker = document.getElementById('hiro-marker');
+
+        marker.addEventListener('markerFound', () => {
+            console.log('Marcador encontrado');
+            // Aquí puedes realizar cualquier acción que necesites cuando se encuentra el marcador
+        });
+
+        marker.addEventListener('markerLost', () => {
+            console.log('Marcador perdido');
+            // Vuelve a intentar la detección después de un pequeño retraso
+            setTimeout(() => {
+                marker.emit('reset'); // Otras acciones que desees hacer
+            }, 1000); // Ajusta el tiempo de retraso según sea necesario
+        });
+    </script>
 </body>
 </html>
+
