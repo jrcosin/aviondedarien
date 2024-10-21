@@ -8,15 +8,17 @@
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 </head>
 <body style="margin: 0; overflow: hidden;">
-    <a-scene embedded arjs='trackingMethod: best; sourceType: webcam; videoTexture: true;'>
+    <a-scene embedded arjs>
+        <!-- Marcador Hiro -->
         <a-marker preset="hiro">
-            <!-- Asegúrate de que el modelo GLB sea accesible en esta URL -->
+            <!-- Modelo 3D -->
             <a-entity gltf-model="url(modelo.glb)" 
                       position="0 0 0" 
                       scale="0.2 0.2 0.2" 
                       rotation="0 180 0" 
                       animation-mixer="clip: *; loop: repeat;"></a-entity>
         </a-marker>
+        <!-- Cámara para la escena -->
         <a-entity camera></a-entity>
     </a-scene>
 </body>
