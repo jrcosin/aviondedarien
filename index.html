@@ -21,6 +21,24 @@
         <!-- Cámara para la escena -->
         <a-entity camera></a-entity>
     </a-scene>
+
+     <button id="audio-btn" style="position: absolute; top: 20px; left: 20px; padding: 10px 20px; font-size: 16px;">
+        Audio
+    </button>
+    <script>
+        // Función para reproducir la voz
+        function hablar(texto) {
+            const sintesisVoz = window.speechSynthesis;
+            const mensaje = new SpeechSynthesisUtterance(texto);
+            mensaje.lang = 'es-ES';  // Cambia el idioma si lo necesitas
+            sintesisVoz.speak(mensaje);
+        }
+
+        // Al hacer clic en el botón "Audio"
+        document.getElementById('audio-btn').addEventListener('click', function() {
+            hablar('En este avión, Darién te invita a volar a donde vos quieras. Imaginá al lugar que quieras llegar. Puede ser otra ciudad, país o continente. Puede estar dentro de vos. En la compañía de Darién, un gran piloto, la experiencia de viajar a lo más bello.');
+        });
+    </script>
     
     <script>
         const marker = document.getElementById('hiro-marker');
